@@ -13,6 +13,8 @@ public class FuncionesCalculadora {
                 + "3. MULTIPLICAR\n"
                 + "4. DIVIDIR\n"
                 + "5. FÓRMULA DEL ESTUDIANTE\n"
+                + "6. RAIZ CUADRADA\n"
+                + "7. POTENCIA\n"
                 + "8. SALIR\n\n"
                 + "Por favor, ingrese el número de la función que desea ejecutar:";
 
@@ -24,25 +26,30 @@ public class FuncionesCalculadora {
         switch (opcion) {
             case "1":
                 JOptionPane.showMessageDialog(null, "Seleccionaste Sumar");
-                Suma();
+                operacion("suma");
                 break;
             case "2":
                 JOptionPane.showMessageDialog(null, "Seleccionaste resta");
-                Resta();
+                operacion("resta");
                 break;
             case "3":
                 JOptionPane.showMessageDialog(null, "Seleccionaste multiplicar");
-                Multiplicar();
+                operacion("multiplicacion");
                 break;
             case "4":
                 JOptionPane.showMessageDialog(null, "Seleccionaste dividir");
-                Dividir();
+                operacion("division");
                 break;
             case "5":
                 JOptionPane.showMessageDialog(null, "Función de la fórmula del estudiante en construcción...");
                 FE();
                 break;
-
+            case "6":
+                JOptionPane.showMessageDialog(null, "Seleccionaste Raiz Cuadrada");
+                break;
+            case "7":
+                JOptionPane.showMessageDialog(null, "Seleccionaste Potencia");
+                break;
             case "8":
                 JOptionPane.showMessageDialog(null, "Saliendo de la calculadora...");
                 System.exit(0);
@@ -53,74 +60,42 @@ public class FuncionesCalculadora {
         }
     }
 
-    public static String ingresoDato(String mensaje) {
-        return JOptionPane.showInputDialog(mensaje);
-    }
+    public static void operacion(String tipo) {
+        String nume1 = JOptionPane.showInputDialog(null, "Ingrese el primer numero");
+        String nume2 = JOptionPane.showInputDialog(null, "Ingerese el segundo numeo");
 
-    public static boolean noValido(String datos) {
-        if (!datos.matches("-?[0-9]+(\\.[0-9]+)?")) {
+        if (noValido(nume1) || noValido(nume2)) {
             JOptionPane.showMessageDialog(null, "Carácter inválido, solo ingrese valores numéricos.");
-            return true;
-        }
-        return false;
-    }
-    public static void Suma() {
-        String num1 =JOptionPane.showInputDialog(null, "Ingrese el primer numero");
-        String num2 =JOptionPane.showInputDialog(null, "Ingrese el segundo numero");
-        float nume1, nume2, sum;
-        nume1= Float.parseFloat(num1);
-        nume2= Float.parseFloat(num2);
-        sum= nume1+nume2;
-        JOptionPane.showMessageDialog(null, "El resultado de la suma es : "+sum);
-    }
-    public static void Resta() {
-        String num1 =JOptionPane.showInputDialog(null, "Ingrese el primer numero");
-        String num2 =JOptionPane.showInputDialog(null, "Ingrese el segundo numero");
-        float nume1, nume2, res;
-        nume1= Float.parseFloat(num1);
-        nume2= Float.parseFloat(num2);
-        res= nume1-nume2;
-        JOptionPane.showMessageDialog(null, "El resultado de la suma es : "+res);
-    }
-    public static void Multiplicar() {
-        String num1 =JOptionPane.showInputDialog(null, "Ingrese el primer numero");
-        String num2 =JOptionPane.showInputDialog(null, "Ingrese el segundo numero");
-        float nume1, nume2, mul;
-        nume1= Float.parseFloat(num1);
-        nume2= Float.parseFloat(num2);
-        mul= nume1*nume2;
-        JOptionPane.showMessageDialog(null, "El resultado de la suma es : "+mul);
-    }
-    public static void Dividir() {
-        String num1 =JOptionPane.showInputDialog(null, "Ingrese el primer numero");
-        String num2 =JOptionPane.showInputDialog(null, "Ingrese el segundo numero");
-        float nume1, nume2, div;
-        nume1= Float.parseFloat(num1);
-        nume2= Float.parseFloat(num2);
-        div= nume1/nume2;
-        JOptionPane.showMessageDialog(null, "El resultado de la suma es : "+div);
-    }
-    public static void FE() {
-        String num1 =JOptionPane.showInputDialog(null, "Ingrese a");
-        String num2 =JOptionPane.showInputDialog(null, "Ingrese b");
-        String num3 =JOptionPane.showInputDialog(null, "Ingrese c");
-        float nume1, nume2,nume3, discriminante;
+            return;
 
-        nume1= Float.parseFloat(num1);
-        nume2= Float.parseFloat(num2);
-        nume3= Float.parseFloat(num3);
-        discriminante = nume2 + (nume2 * nume2) - 4 * (nume1 * nume3);
-        if (discriminante < 0) {
-            JOptionPane.showMessageDialog(null, "La ecuación no tiene soluciones reales.");
-        }else{
-            double raiz = Math.sqrt(discriminante);
-            double fe1 = (-nume2 + raiz) / (2 * nume1);
-            double fe2 = (-nume2 - raiz) / (2 * nume1);
-            JOptionPane.showMessageDialog(null, "El resultado en x1 : "+fe1+"El resultado en x2 : "+fe2);
         }
 
+        float n1 = Float.parseFloat(nume1);
+        float n2 = Float.parseFloat(nume2);
+        float resultado = 0;
+
+        switch (tipo) {
+            case "suma":
+                resultado = n1 + n2;
+                JOptionPane.showMessageDialog(null, "El resultado de la suma es: " + resultado);
+                break;
+            case "resta":
+                resultado = n1 - n2;
+                JOptionPane.showMessageDialog(null, "El resultado de la resta es: " + resultado);
+                break;
+            case "multiplicacion":
+                JOptionPane.showMessageDialog(null, "El resultado de la multiplicacion es: " + resultado);
+                break;
+            case " division":
+                if (n2 == 0) {
+                    JOptionPane.showMessageDialog(null, "No se puede dividir por cero rey, ubicate");
+                } else {
+                    resultado = n1 / n2;
+                    JOptionPane.showMessageDialog(null, "el resultado de la division es: " + resultado);
+                }
+                break;
+
+        }
     }
-
-
 
 }
