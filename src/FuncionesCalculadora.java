@@ -6,7 +6,7 @@ public class FuncionesCalculadora {
     }
 
     public static void menuCalculadora() {
-        // Menú corregido
+
         String menu = "Calculadora\n"
                 + "1. SUMAR\n"
                 + "2. RESTAR\n"
@@ -15,6 +15,7 @@ public class FuncionesCalculadora {
                 + "5. FÓRMULA DEL ESTUDIANTE\n"
                 + "6. RAIZ CUADRADA\n"
                 + "7. POTENCIA\n"
+                + "8. MODULO\n"
                 + "8. SALIR\n\n"
                 + "Por favor, ingrese el número de la función que desea ejecutar:";
 
@@ -51,6 +52,10 @@ public class FuncionesCalculadora {
                 JOptionPane.showMessageDialog(null, "Seleccionaste Potencia");
                 break;
             case "8":
+                JOptionPane.showConfirmDialog(null, "Seleccionaste Modulo");
+                Modulo();
+                break;
+            case "9":    
                 JOptionPane.showMessageDialog(null, "Saliendo de la calculadora...");
                 System.exit(0);
                 break;
@@ -98,4 +103,53 @@ public class FuncionesCalculadora {
         }
     }
 
+public static void FE() {
+    String nume1 = JOptionPane.showInputDialog(null, "Ingrese a");
+    String nume2 = JOptionPane.showInputDialog(null, "Ingrese b");
+    String nume3 = JOptionPane.showInputDialog(null, "ingrese c");
+
+    if (noValido(nume1) || noValido(nume2) || noValido(nume3)) {
+        JOptionPane.showMessageDialog(null, "Ingrese unicamente valores numericos validos");
+        return;
+ 
+    }
+    
+    float a = Float.parseFloat(nume1);
+    float b = Float.parseFloat(nume2);
+    float c = Float.parseFloat(nume3);
+
+    float discriminante = b * b - 4 * a * c;
+    if (discriminante < 0) {
+        double raiz = Math.sqrt(discriminante);
+        double x1 = (-b + raiz) / (2*a);
+        double x2 = (-b - raiz) / (2*a);
+        JOptionPane.showMessageDialog(null, "El resultado en x1: "+ x1 + "\nEl resultado en x2: "+ x2);
+        //me quise complicar la vida tambien :)
+    } else if (discriminante == 0) {
+        double x = -b / (2*a);
+        JOptionPane.showMessageDialog(null, "La ecuacion tiene una raiz repetida:\n"+ "x= " + x);
+    } else {
+        double parteReal = -b / (2*a);
+        double ParteImaginaria = Math.sqrt(-discriminante)/(2*a);
+         JOptionPane.showMessageDialog(null, "Las soluciones son complejas:\n"
+                    + "x1 = " + parteReal + " + " + ParteImaginaria + "i\n"
+                    + "x2 = " + parteReal + " - " + ParteImaginaria + "i");
+    }
+
+}
+
+public static void RaizCuadrada() {
+    String nume = JOptionPane.showInputDialog(null, "Ingrese el numero para calcular su raiz");
+    if (noValido(nume)) {
+        JOptionPane.showMessageDialog(null, "Ingrese un valor numerico valido");
+        return;
+    }
+
+    float numero = Float.parseFloat(nume);
+    if (numero < 0) {
+        JOptionPane.showMessageDialog(null, "no se puede calcular la raiz de un numero negativo");
+    } else {
+        double raiz = Math.sqrt(numero);
+        JOptionPane.showMessageDialog(null,"la raiz cuadrada de " + numero + " es:" + raiz);
+    }
 }
