@@ -120,20 +120,14 @@ public static void FE() {
 
     float discriminante = b * b - 4 * a * c;
     if (discriminante < 0) {
+        JOptionPane.showMessageDialog(null, "No tiene solucion Real");
+        } else {
         double raiz = Math.sqrt(discriminante);
         double x1 = (-b + raiz) / (2*a);
         double x2 = (-b - raiz) / (2*a);
         JOptionPane.showMessageDialog(null, "El resultado en x1: "+ x1 + "\nEl resultado en x2: "+ x2);
-        //me quise complicar la vida tambien :)
-    } else if (discriminante == 0) {
-        double x = -b / (2*a);
-        JOptionPane.showMessageDialog(null, "La ecuacion tiene una raiz repetida:\n"+ "x= " + x);
-    } else {
-        double parteReal = -b / (2*a);
-        double ParteImaginaria = Math.sqrt(-discriminante)/(2*a);
-         JOptionPane.showMessageDialog(null, "Las soluciones son complejas:\n"
-                    + "x1 = " + parteReal + " + " + ParteImaginaria + "i\n"
-                    + "x2 = " + parteReal + " - " + ParteImaginaria + "i");
+        }  
+     
     }
 
 }
