@@ -21,7 +21,7 @@ public class FuncionesCalculadora {
                     + "11. COS\n"
                     + "12. TAN\n"
                     + "13. PORCENTAJE\n"
-                    + "13. SALIR\n\n"
+                    + "14. SALIR\n\n"
                     + "Por favor, ingrese el número de la función que desea ejecutar:";
 
             String opcion = JOptionPane.showInputDialog(menu);
@@ -298,8 +298,8 @@ public class FuncionesCalculadora {
                 return;
             }
 
-            float num = Float.parseDouble(numero);
-            float porc = Float.parseDouble(porcentaje);
+           float num = Float.parseFloat(numero);
+           float porc = Float.parseFloat(porcentaje);
 
             float resultado = (num * porc) / 100;
             JOptionPane.showMessageDialog(null, "El"+ "% de" + num+ "es: "+ resultado);
