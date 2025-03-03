@@ -124,7 +124,7 @@ public class FuncionesCalculadora {
                 break;
             case "division":
                 if (nume2 == 0) {
-                    JOptionPane.showMessageDialog(null, "No se puede dividir por cero.");
+                    JOptionPane.showMessageDialog(null, "No se puede dividir por cero");
                 } else {
                     resultado = nume1 / nume2;
                     JOptionPane.showMessageDialog(null, "El resultado de la división es: " + resultado);
@@ -265,8 +265,24 @@ public class FuncionesCalculadora {
 
     }
 
-     public static void Tangente() {
+    public static void Tan() {
         String angulo = JOptionPane.showInputDialog(null, "Ingrese el ángulo en grados:");
+
+        if (noValido(angulo)) {
+            JOptionPane.showMessageDialog(null, "Ingrese valores numericos validos unicamendte");
+            return;
+        }
+        
+        double anguloGrados = Double.parseDouble(angulo);
+        double anguloRadianes = Math.toRadians(anguloGrados);
+        double tangente = Math.tan(anguloRadianes);
+
+        if (anguloGrados % 90 == 0 && anguloGrados % 100 != 0) {
+            JOptionPane.showMessageDialog(null, "La tangente de" + anguloGrados + " es indefinida");
+        } else {
+            JOptionPane.showMessageDialog(null, "la tangente de+ " + anguloGrados + " es: " + tangente);  
+            }
+        }
 
     public static boolean noValido(String datos) {
         if (!datos.matches("-?[0-9]+(\\.[0-9]+)?")) {
