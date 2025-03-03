@@ -17,7 +17,10 @@ public class FuncionesCalculadora {
                     + "7. POTENCIA\n"
                     + "8. MODULO\n"
                     + "9. CELSIUS A FAHRENHEIT\n"
-                    + "10. SALIR\n\n"
+                    + "10. SEN\n"
+                    + "11. COS\n"
+                    + "12. TAN\n"
+                    + "13. SALIR\n\n"
                     + "Por favor, ingrese el número de la función que desea ejecutar:";
 
             String opcion = JOptionPane.showInputDialog(menu);
@@ -75,6 +78,18 @@ public class FuncionesCalculadora {
             case "9":
                 JOptionPane.showMessageDialog(null, "Seleccionaste Convertir Celsius a Fahrenheit");
                 CelsiusAFahrenheit();
+                break;
+            case "10":
+                JOptionPane.showMessageDialog(null, "Seleccionaste Seno");
+                Sen();
+                break;
+            case "11":
+                JOptionPane.showMessageDialog(null, "Seleccionaste Coseno");
+                Cos();
+                break;
+            case "12":
+                JOptionPane.showMessageDialog(null, "Seleccionaste Tangente");
+                Tan();
                 break;
             default:
                 JOptionPane.showMessageDialog(null, "Opción inválida. Intente nuevamente.");
@@ -217,6 +232,41 @@ public class FuncionesCalculadora {
 
         JOptionPane.showMessageDialog(null, celsiusNum + " °C equivale a " + fahrenheit + " °F");
     }
+
+    public static void Sen() {
+        String angulo = JOptionPane.showInputDialog(null, "Ingrese el ángulo en grados:");
+
+        if (noValido(angulo)) {
+            JOptionPane.showMessageDialog(null, "Ingrese un valor numérico valido.");
+            return;
+        }
+
+        double anguloGrados = Double.parseDouble(angulo);
+        double anguloRadianes = Math.toRadians(anguloGrados);
+        double seno = Math.sin(anguloRadianes);
+
+        JOptionPane.showMessageDialog(null, "El seno de " + anguloGrados + "es " + seno);
+
+    }
+
+    public static void Cos() {
+        String angulo = JOptionPane.showInputDialog(null, "Ingrese el ángulo en grados:");
+
+        if (noValido(angulo)) {
+            JOptionPane.showMessageDialog(null, "Ingrese un valor numerico valido.");
+            return;
+        }
+
+        double anguloGrados = Double.parseDouble(angulo);
+        double anguloRadianes = Math.toRadians(anguloGrados);
+        double coseno = Math.cos(anguloRadianes);
+
+        JOptionPane.showMessageDialog(null, "El coseno de " + anguloGrados + "° es: " + coseno);
+
+    }
+
+     public static void Tangente() {
+        String angulo = JOptionPane.showInputDialog(null, "Ingrese el ángulo en grados:");
 
     public static boolean noValido(String datos) {
         if (!datos.matches("-?[0-9]+(\\.[0-9]+)?")) {
