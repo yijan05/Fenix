@@ -1,31 +1,29 @@
-package Fenix.Biblioteca;
-
-public class libro {
+public class Libro {
     private String titulo;
     private String autor;
     private String ISBN;
-    private boolean disponible = true;
+    private boolean disponible;
 
-    public libro(String titulo, String autor, String ISBN, boolean disponible) {
+    public Libro(String titulo, String autor, String ISBN, boolean disponible) {
         this.titulo = titulo;
         this.autor = autor;
         this.ISBN = ISBN;
         this.disponible = disponible;
     }
 
-    public String gettitulo() {
+    public String getTitulo() {
         return titulo;
     }
 
-    public void settitulo(String titulo) {
+    public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
 
-    public String getautor() {
+    public String getAutor() {
         return autor;
     }
 
-    public void setautor(String autor) {
+    public void setAutor(String autor) {
         this.autor = autor;
     }
 
@@ -45,12 +43,9 @@ public class libro {
         this.disponible = disponible;
     }
 
+    @Override
     public String toString() {
-        return "Libro{" +
-                "titulo='" + titulo + '\'' +
-                ", autor='" + autor + '\'' +
-                ", isbn='" + ISBN + '\'' +
-                ", disponible=" + disponible +
-                '}';
+        return "Libro{titulo='" + titulo + "', autor='" + autor + "', ISBN='" + ISBN + "', disponible=" + disponible
+                + "}";
     }
 }
