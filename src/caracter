@@ -1,0 +1,8 @@
+def convertir ASCII(caracter);
+ asc= 0
+ asc=ord(caracter)
+ return asc
+nombre= imput("ingrese su nombre")
+ca = convertir ASCII(nombre)
+print("el numero corresondiente es:"+str(ca))
+
