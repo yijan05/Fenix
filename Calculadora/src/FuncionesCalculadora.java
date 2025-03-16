@@ -20,7 +20,8 @@ public class FuncionesCalculadora {
                     + "10. SEN\n"
                     + "11. COS\n"
                     + "12. TAN\n"
-                    + "13. SALIR\n\n"
+                    + "13. PORCENTAJE\n"
+                    + "14. SALIR\n\n"
                     + "Por favor, ingrese el número de la función que desea ejecutar:";
 
             String opcion = JOptionPane.showInputDialog(menu);
@@ -90,6 +91,10 @@ public class FuncionesCalculadora {
             case "12":
                 JOptionPane.showMessageDialog(null, "Seleccionaste Tangente");
                 Tan();
+                break;
+            case "13":
+                JOptionPane.showMessageDialog(null, "Seleccionaste Porcentaje");
+                Porcentaje();
                 break;
             default:
                 JOptionPane.showMessageDialog(null, "Opción inválida. Intente nuevamente.");
@@ -284,6 +289,22 @@ public class FuncionesCalculadora {
             }
         }
 
+        public static void Porcentaje() {
+            String numero = JOptionPane.showInputDialog(null, "Ingrese el numero:");
+            String porcentaje = JOptionPane.showInputDialog(null, "Ingrese el porcentaje:");
+
+            if (noValido(numero) || noValido(porcentaje)) {
+                JOptionPane.showMessageDialog(null,"Ingrese solo valores numericos validos");
+                return;
+            }
+
+           float num = Float.parseFloat(numero);
+           float porc = Float.parseFloat(porcentaje);
+
+            float resultado = (num * porc) / 100;
+            JOptionPane.showMessageDialog(null, "El"+ "% de" + num+ "es: "+ resultado);
+        }
+
     public static boolean noValido(String datos) {
         if (!datos.matches("-?[0-9]+(\\.[0-9]+)?")) {
             JOptionPane.showMessageDialog(null, "Caracter invalido, solo ingrese valores numéricos.");
@@ -291,4 +312,4 @@ public class FuncionesCalculadora {
         }
         return false;
     }
-}
+} 
